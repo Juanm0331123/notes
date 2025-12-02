@@ -19,7 +19,7 @@ nombre_proyecto/
 │   ├── __init__.py
 │   ├── main.py              # Punto de entrada que el DAG o Docker ejecutará
 │   ├── scraper.py           # Lógica de Selenium
-│   └── drive_manager.py     # ¡NUEVO! Lógica para subir/bajar archivos de Drive
+│   └── drive_manager.py     # Lógica para subir/bajar archivos de Drive
 └── data/                    # Volúmenes de Docker se montarán aquí
     ├── raw/
     └── processed/

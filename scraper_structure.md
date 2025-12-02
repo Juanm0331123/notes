@@ -1,7 +1,7 @@
 # Estructura y Notas de Scrapers
 
 ## Estructura de directorio Tree para un Scraper (puede variar):
-´´´bash
+```bash
 nombre_proyecto/
 ├── .gitignore               # CRÍTICO: Ignora credenciales y entornos virtuales
 ├── .dockerignore            # Optimiza la construcción de la imagen Docker
@@ -23,4 +23,4 @@ nombre_proyecto/
 └── data/                    # Volúmenes de Docker se montarán aquí
     ├── raw/
     └── processed/
-´´´
+```

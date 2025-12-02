@@ -24,3 +24,38 @@ nombre_proyecto/
     ├── raw/
     └── processed/
 ```
+
+### Ejemplo "real"
+```bash
+WebScrapingEmssanarBoxalud/
+├── .dockerignore            # Configurado para ignorar data/ y venv/
+├── .env                     # Variables de entorno (NO subir a Git)
+├── .gitignore               # Ignora venv, credentials, data, .env
+├── Dockerfile               # Configuración de la imagen con Chrome
+├── README.md
+├── requirements.txt
+├── run.py                   # Entrypoint local (ej: python run.py)
+├── config/
+│   ├── __init__.py
+│   └── settings.py          # Rutas absolutas, config de Drive, constantes
+├── credentials/             # Mapeado via Secret en Docker/Airflow
+│   └── service_account.json
+├── dags/
+│   └── scraper_dag.py       # DAG de Airflow que ejecuta el Docker
+├── data/                    # ¡IMPORTANTE! Esta carpeta se monta como VOLUMEN
+│   ├── downloads/           # AQUÍ se guardan los certificados PDF/ZIP
+│   ├── input/               # Aquí cae el Excel descargado de Drive
+│   └── state/               # Aquí vive 'progreso_boxsalud.json'
+├── logs/
+│   └── app.log              # Logs técnicos (errores de sistema/selenium)
+└── src/
+    ├── __init__.py
+    ├── main.py              # Lógica principal (Orquestador)
+    ├── scraper.py           # Clase BoxSaludScraper (Selenium puro)
+    ├── drive_manager.py     # Clase GoogleDriveManager (API Drive)
+    ├── data_manager.py      # Lógica de Excel <-> JSON <-> CSV
+    └── utils/
+        ├── __init__.py
+        ├── logger.py        # Tu clase ScraperLogger (Visualización)
+        └── system.py        # Funciones extras (limpieza de archivos, zipear)
+```
